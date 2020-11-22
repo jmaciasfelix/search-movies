@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+//Context
+import { ThemeContext } from '../../context/Theme';
 
 const Wrapper = styled.header`
   display: flex;
@@ -9,11 +11,17 @@ const Wrapper = styled.header`
   border: 1px solid red;
 `;
 
-export const Header = () => {
+export const Header = ({ setTheme }) => {
+  const { isDark } = useContext(ThemeContext);
+
+  const toggleTheme = () => {
+    setTheme({ isDark: !isDark });
+  };
+
   return (
     <Wrapper>
       <h1>Filmmit 🍿</h1>
-      <div>🌑</div>
+      <button onClick={toggleTheme}>{isDark ? '🌞' : '🌑'}</button>
     </Wrapper>
   );
 };

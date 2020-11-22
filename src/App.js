@@ -1,10 +1,11 @@
 import { Layout } from './util/Layout';
 
+import { Header } from './components/Header';
+
 function App() {
   return (
     <Layout>
-      <h1>Welcome to Search Movies 🍿</h1>
-      <p>Enjoy see films!!</p>
+      <Header />
     </Layout>
   );
 }

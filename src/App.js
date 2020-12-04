@@ -2,9 +2,10 @@ import React from "react";
 import { ThemeContext } from "./context/Theme";
 import { Layout } from "./util/Layout";
 //router
-import { Link, Route, Switch } from "wouter";
+import { Route, Switch } from "wouter";
 //Components
 import { Header } from "./components/Header";
+import { Nav } from "./components/Nav";
 //Pages
 import { Details, Fav, Home, NotFound, Login, Register } from "./pages";
 //Context
@@ -22,10 +23,12 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
             <Route path="/details/:film" component={Details} />
+            <Route path="/details" component={Details} />
             <Route path="/fav" component={Fav} />
             <Route component={NotFound} />
           </Content>
         </Switch>
+        <Nav />
       </Layout>
     </ThemeContext.Provider>
   );

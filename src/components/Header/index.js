@@ -22,7 +22,7 @@ export const Header = ({ setTheme }) => {
   return (
     <Wrapper>
       <h1>Filmmit 🍿</h1>
-      <Button onClick={toggleTheme} >{isDark ? "🌞" : "🌑"}</Button>
+      <Button onClick={toggleTheme} type="theme">{isDark ? "🌞" : "🌑"}</Button>
     </Wrapper>
   );
 };

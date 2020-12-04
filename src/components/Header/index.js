@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import styled from "styled-components";
 //Context
-import { ThemeContext } from '../../context/Theme';
+import { ThemeContext } from "../../context/Theme";
+import { Button } from "../Utils/Button";
+//utils
 
 const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  border: 1px solid red;
 `;
 
 export const Header = ({ setTheme }) => {
@@ -21,7 +22,7 @@ export const Header = ({ setTheme }) => {
   return (
     <Wrapper>
       <h1>Filmmit 🍿</h1>
-      <button onClick={toggleTheme}>{isDark ? '🌞' : '🌑'}</button>
+      <Button onClick={toggleTheme} >{isDark ? "🌞" : "🌑"}</Button>
     </Wrapper>
   );
 };

@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: grid;
   height: 100vh;
   place-items: center;
@@ -21,8 +22,8 @@ const Content = styled.main`
 
 export const Layout = ({ children }) => {
   return (
-    <Container>
+    <Wrapper>
       <Content>{children}</Content>
-    </Container>
+    </Wrapper>
   );
 };

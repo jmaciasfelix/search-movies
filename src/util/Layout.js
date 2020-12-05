@@ -13,6 +13,10 @@ const Content = styled.main`
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   height: 90vh;
   width: 450px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
   @media (max-width: 520px) {
     height: 90vh;

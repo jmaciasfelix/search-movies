@@ -9,7 +9,11 @@ const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 8px 0px;
+  border-bottom: 1px solid grey;
+  h1 {
+    margin: 0;
+  }
 `;
 
 export const Header = ({ setTheme }) => {

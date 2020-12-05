@@ -7,10 +7,19 @@ import { SearchIcon, FavIcon, ResultIcon } from "../Icons";
 import { Button } from "../Utils/Button";
 
 const Wrapper = styled.nav`
-  border: 1px solid green;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  border-top: 1px solid grey;
+  padding: 5px 0px;
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  button:focus {
+    outline: none;
+  }
 `;
 
 export const Nav = () => {

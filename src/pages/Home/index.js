@@ -1,6 +1,6 @@
 import React from "react";
-import { Searcher } from "../../components/Searcher";
 //components
+import { Searcher } from "../../components/Searcher";
 
 export const Home = () => (
     <section>

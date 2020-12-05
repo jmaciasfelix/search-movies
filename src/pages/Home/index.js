@@ -1,7 +1,9 @@
 import React from "react";
+import { Searcher } from "../../components/Searcher";
+//components
 
 export const Home = () => (
     <section>
-        <h1>Este componente es el Home 🏠</h1>
+        <Searcher />
     </section>
 )

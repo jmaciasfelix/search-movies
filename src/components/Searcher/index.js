@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 //components
 import { Button } from "../Utils/Button";
 //constant
-import { endpointMovieDb, apiKeyMovieDb } from "../../constant";
+import { useSearch } from "../../hooks/useSearch";
+import { useLocation } from "wouter";
 
 const Form = styled.form`
   display: flex;
@@ -36,18 +37,18 @@ const Form = styled.form`
   }
 `;
 export const Searcher = () => {
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("");
+  const { result, setSearch, error, loading } = useSearch();
+  const [, setLocation] = useLocation();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    //TODO search in IMDB and set result in search state
-    fetch(
-      "https://api.themoviedb.org/3/search/movie?api_key=4a6db02614b74a2d28418aa0b353924e&language=en-US&query=Star%20Wars&page=1&include_adult=false"
-    )
-      .then((response) => response.json())
-      .then(({results}) => console.log(results));
+    value && setSearch(encodeURI(value));
   };
+
+  useEffect(() => {
+    result && value && setLocation(`/details/${value.trim()}`);
+  }, [result, setLocation, value]);
 
   return (
     <Form onSubmit={handleSearch}>
@@ -56,13 +57,19 @@ export const Searcher = () => {
         <input
           type="text"
           name="search"
-          value={search}
+          value={value}
           placeholder={"Search with Filmmit 🔍"}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
         />
         <Button type="search" disabled={loading}>
           Search
         </Button>
+        {
+          error && <p>Someone has burned the movies 🔥🎥, try again 🚿</p>
+        }
+        {
+          loading && <p>⌛</p>
+        }
       </div>
     </Form>
   );

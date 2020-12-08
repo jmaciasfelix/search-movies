@@ -1,7 +1,9 @@
 import React from "react";
+//components
+import { Film } from "../../components/Film"
 
 export const Details = () => (
     <section>
-        <h1>Este componente es Details 😀</h1>
+        <Film />
     </section>
 )

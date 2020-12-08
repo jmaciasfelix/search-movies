@@ -27,22 +27,17 @@ export const useSearch = () => {
         .then(({ results }) => {
           setError(false);
           setLoading(false);
-          setValue(
-            results.map(({ id, title, release_date, backdrop_path }) => ({
+
+          const films = results.map(({ id, title, release_date, backdrop_path }) => ({
               id,
               title,
               release_date,
               backdrop_path,
-            }))
-          );
-          setResult(
-            results.map(({ id, title, release_date, backdrop_path }) => ({
-              id,
-              title,
-              release_date,
-              backdrop_path,
-            }))
-          );
+            })
+          ).filter(({backdrop_path})=>backdrop_path);
+
+          setValue(films);
+          setResult(films);
         });
     }
   }, [search, setValue]);

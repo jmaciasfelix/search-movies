@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 //components
 import { Button } from "../Utils/Button";
@@ -47,6 +47,7 @@ export const Searcher = () => {
   };
 
   useEffect(() => {
+    result && value && console.log("Se renderiza");
     result && value && setLocation(`/details/${value.trim()}`);
   }, [result, setLocation, value]);
 
@@ -64,12 +65,8 @@ export const Searcher = () => {
         <Button type="search" disabled={loading}>
           Search
         </Button>
-        {
-          error && <p>Someone has burned the movies 🔥🎥, try again 🚿</p>
-        }
-        {
-          loading && <p>⌛</p>
-        }
+        {error && <p>Someone has burned the movies 🔥🎥, try again 🚿</p>}
+        {loading && <p>⌛</p>}
       </div>
     </Form>
   );

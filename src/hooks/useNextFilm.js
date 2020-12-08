@@ -10,20 +10,20 @@ export const useNextFilm = () => {
   const [value] = useLocalStorage("result", "");
 
   useEffect(() => {
-      console.log("useEffect useNextFilm ");
-      setFilm(value[position]);
-    }, [value]);
+    setFilm(value[position]);
+  }, [value, position]);
 
   const checkLimit = (action) =>
-    action ? position < value.length - 1 : position !== 0;
+    action === 1 ? position < value.length - 1 : position !== 0;
 
   const handleDisable = (newPosition) => {
     newPosition === 0 ? setDisableLeft(true) : setDisableLeft(false);
-    newPosition === value.length - 1 ? setDisableRight(true) : setDisableRight(false);
+    newPosition === value.length - 1
+      ? setDisableRight(true)
+      : setDisableRight(false);
   };
 
   const nextFilm = (action) => {
-    console.log("nextFilm ", action);
     if (checkLimit(action)) {
       handleDisable(position + action);
       setPosition(position + action);

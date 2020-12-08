@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 //constant
 import { apiKeyMovieDb, endpointMovieDb } from "../constant";
+//hooks
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useSearch = () => {
   const [search, setSearch] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  //TODO Use key user fireBase or use sessionStorage [https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage]
+  const [, setValue] = useLocalStorage("result", "");
 
   useEffect(() => {
     if (search) {
@@ -23,6 +27,14 @@ export const useSearch = () => {
         .then(({ results }) => {
           setError(false);
           setLoading(false);
+          setValue(
+            results.map(({ id, title, release_date, backdrop_path }) => ({
+              id,
+              title,
+              release_date,
+              backdrop_path,
+            }))
+          );
           setResult(
             results.map(({ id, title, release_date, backdrop_path }) => ({
               id,
@@ -33,7 +45,7 @@ export const useSearch = () => {
           );
         });
     }
-  }, [search]);
+  }, [search, setValue]);
 
   return { result, setSearch, error, loading };
 };

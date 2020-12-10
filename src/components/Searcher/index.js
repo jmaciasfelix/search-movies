@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 //components
 import { Button } from "../Utils/Button";
@@ -36,6 +36,7 @@ const Form = styled.form`
     }
   }
 `;
+
 export const Searcher = () => {
   const [value, setValue] = useState("");
   const { result, setSearch, error, loading } = useSearch();
@@ -47,7 +48,6 @@ export const Searcher = () => {
   };
 
   useEffect(() => {
-    result && value && console.log("Se renderiza");
     result && value && setLocation(`/details/${value.trim()}`);
   }, [result, setLocation, value]);
 

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+//Context
+import { ThemeContext } from "../context/Theme";
 
 const Wrapper = styled.div`
   display: grid;
@@ -8,15 +10,16 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.main`
-  background: #fff;
+  background: ${(props) => (props.isDark ? "black" : "#fff")};
+  color: ${(props) => (props.isDark ? "#fff" : "black")};
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  height: 90vh;
-  width: 450px;
   padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  height: 90vh;
+  width: 450px;
 
   @media (max-width: 520px) {
     height: 90vh;
@@ -25,9 +28,10 @@ const Content = styled.main`
 `;
 
 export const Layout = ({ children }) => {
+  const { isDark } = useContext(ThemeContext);
   return (
     <Wrapper>
-      <Content>{children}</Content>
+      <Content isDark={isDark}>{children}</Content>
     </Wrapper>
   );
 };

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { Link } from "wouter";
 //Context
 import { ThemeContext } from "../../context/Theme";
+//components
 import { Button } from "../Utils/Button";
-//utils
+import { LoginIcon } from "../Icons/LoginIcon";
 
 const Wrapper = styled.header`
   display: flex;
@@ -11,8 +13,13 @@ const Wrapper = styled.header`
   justify-content: space-between;
   padding: 8px 0px;
   border-bottom: 1px solid grey;
-  h1 {
+  h1,
+  h2 {
     margin: 0;
+    cursor: pointer;
+  }
+  p {
+    cursor: pointer;
   }
 `;
 
@@ -25,8 +32,17 @@ export const Header = ({ setTheme }) => {
 
   return (
     <Wrapper>
-      <h1>Filmmit 🍿</h1>
-      <Button onClick={toggleTheme} type="theme">{isDark ? "🌞" : "🌑"}</Button>
+      <Link href="/login">
+        <h2>
+          <LoginIcon />
+        </h2>
+      </Link>
+      <Link href="/home">
+        <h1>Filmmit 🍿</h1>
+      </Link>
+      <Button onClick={toggleTheme} type="theme">
+        {isDark ? "🌞" : "🌑"}
+      </Button>
     </Wrapper>
   );
 };

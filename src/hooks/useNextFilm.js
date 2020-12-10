@@ -7,10 +7,12 @@ export const useNextFilm = () => {
   const [position, setPosition] = useState(0);
   const [disableRight, setDisableRight] = useState(false);
   const [disableLeft, setDisableLeft] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [value] = useLocalStorage("result", "");
 
   useEffect(() => {
     setFilm(value[position]);
+    setLoading(false);
   }, [value, position]);
 
   const checkLimit = (action) =>
@@ -31,5 +33,13 @@ export const useNextFilm = () => {
     }
   };
 
-  return { film, disableRight, disableLeft, nextFilm, position };
+  return {
+    film,
+    loading,
+    disableRight,
+    disableLeft,
+    nextFilm,
+    position,
+    total: value.length,
+  };
 };

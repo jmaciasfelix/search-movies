@@ -14,7 +14,7 @@ Filmmit allows you to search and save movies. This project has been carried out 
 - Jest
 ## Draft ✏️
 
-![Image not found](https://github.com/jmaciasfelix/search-movies/blob/develop/draft/Filmmit-v1?raw=true)
+![Image not found](https://github.com/jmaciasfelix/search-movies/blob/develop/draft/v1/Filmmit-v1.svg?raw=true)
 
 ## Improve ✨
 - More test

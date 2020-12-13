@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 //wouter
 import { Link } from "wouter";
+//firebase
+import { loginWithGoogle } from "../../firebase/client";
 
 const Wrapper = styled.section`
   border: 1px solid red;
@@ -38,7 +40,7 @@ const FormLogin = styled.form`
 const FieldPassword = styled.div``;
 
 export const Login = () => {
-  const [isHidden, setHidden] = useState(false);
+  const [isHidden, setHidden] = useState(true);
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("");
 
@@ -47,6 +49,13 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log("handleLogin");
+    loginWithGoogle()
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -75,7 +84,7 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <i type="button" onClick={() => setHidden(!isHidden)}>
-            👀
+            {isHidden ? "👀" : "🤫"}
           </i>
         </FieldPassword>
         <button type="submit" onClick={handleLogin} disabled={isDisabled()}>
